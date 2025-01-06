@@ -1,13 +1,38 @@
-import { StyleSheet, TextInput, TextInputProps } from "react-native";
-import { Colors, Radius } from "../tokens";
+import {
+  Pressable,
+  StyleSheet,
+  TextInput,
+  TextInputProps,
+  View,
+} from "react-native";
+import { Colors, Fonts, Radius } from "../tokens";
+import { useState } from "react";
+import EyeOpenedIcon from "@/assets/icons/eye-opened";
+import EyeClosedIcon from "@/assets/icons/eye-closed";
 
-const Input = (props: TextInputProps) => {
+const Input = ({
+  isPassword,
+  ...props
+}: TextInputProps & { isPassword?: boolean }) => {
+  const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
+
   return (
-    <TextInput
-      style={styles.input}
-      placeholderTextColor={Colors.gray}
-      {...props}
-    />
+    <View>
+      <TextInput
+        style={styles.input}
+        placeholderTextColor={Colors.gray}
+        secureTextEntry={isPassword && !isPasswordVisible}
+        {...props}
+      />
+      {isPassword && (
+        <Pressable
+          style={styles.eyeIcon}
+          onPress={() => setIsPasswordVisible((prev) => !prev)}
+        >
+          {isPasswordVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
+        </Pressable>
+      )}
+    </View>
   );
 };
 
@@ -19,6 +44,13 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.violetDark,
     paddingHorizontal: 24,
     borderRadius: Radius.r10,
-    fontSize: 16,
+    fontSize: Fonts.f16,
+    color: Colors.gray,
+  },
+  eyeIcon: {
+    position: "absolute",
+    right: 0,
+    paddingHorizontal: 20,
+    paddingVertical: 18,
   },
 });

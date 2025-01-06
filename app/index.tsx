@@ -1,8 +1,9 @@
+import Button from "@/shared/Button/Button";
 import Input from "@/shared/Input/Input";
 import { Colors, Gaps } from "@/shared/tokens";
 import { useNavigation } from "expo-router";
 import { useEffect } from "react";
-import { Button, Text, TextInput, View, StyleSheet, Image } from "react-native";
+import { Text, View, StyleSheet, Image } from "react-native";
 
 export default function Index() {
   const navigation = useNavigation();
@@ -21,8 +22,8 @@ export default function Index() {
         />
         <View style={styles.form}>
           <Input placeholder="Email" />
-          <Input placeholder="Пароль" />
-          <Button color="#6C38CC" title="Войти" />
+          <Input isPassword placeholder="Пароль" />
+          <Button text="Войти" />
         </View>
         <Text>Восстановить пароль</Text>
       </View>
