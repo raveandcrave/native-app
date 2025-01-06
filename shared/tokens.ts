@@ -6,6 +6,7 @@ export const Colors = {
   primaryHover: "#452481",
   link: "#A97BFF",
   gray: "#AFB2BF",
+  red: "#CC384E",
 };
 
 export const Gaps = {
