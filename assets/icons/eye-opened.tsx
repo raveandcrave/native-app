@@ -1,4 +1,4 @@
-import Svg, { Path } from "react-native-svg";
+import Svg, { Path } from 'react-native-svg';
 
 const EyeOpenedIcon = () => (
   <Svg width={24} height={24} fill="none">

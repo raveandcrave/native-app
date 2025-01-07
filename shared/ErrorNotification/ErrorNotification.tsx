@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
-import { ErrorNotificationProps } from "./ErrorNotification.props";
-import { Text, StyleSheet, Dimensions, Animated } from "react-native";
-import { Colors, Fonts } from "../tokens";
+import { useEffect, useState } from 'react';
+import { ErrorNotificationProps } from './ErrorNotification.props';
+import { Text, StyleSheet, Dimensions, Animated } from 'react-native';
+import { Colors, Fonts } from '../tokens';
 
 const ErrorNotification = ({ error }: ErrorNotificationProps) => {
   const [isShown, setIsShown] = useState<boolean>(false);
@@ -49,15 +49,15 @@ export default ErrorNotification;
 
 const styles = StyleSheet.create({
   error: {
-    position: "absolute",
-    width: Dimensions.get("screen").width,
     backgroundColor: Colors.red,
     padding: 15,
+    position: 'absolute',
     top: 50,
+    width: Dimensions.get('screen').width,
   },
   errorText: {
-    fontSize: Fonts.f16,
     color: Colors.white,
-    textAlign: "center",
+    fontSize: Fonts.f16,
+    textAlign: 'center',
   },
 });

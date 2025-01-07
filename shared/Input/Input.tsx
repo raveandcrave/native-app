@@ -1,19 +1,10 @@
-import {
-  Pressable,
-  StyleSheet,
-  TextInput,
-  TextInputProps,
-  View,
-} from "react-native";
-import { Colors, Fonts, Radius } from "../tokens";
-import { useState } from "react";
-import EyeOpenedIcon from "@/assets/icons/eye-opened";
-import EyeClosedIcon from "@/assets/icons/eye-closed";
+import { Pressable, StyleSheet, TextInput, TextInputProps, View } from 'react-native';
+import { Colors, Fonts, Radius } from '../tokens';
+import { useState } from 'react';
+import EyeOpenedIcon from '@/assets/icons/eye-opened';
+import EyeClosedIcon from '@/assets/icons/eye-closed';
 
-const Input = ({
-  isPassword,
-  ...props
-}: TextInputProps & { isPassword?: boolean }) => {
+const Input = ({ isPassword, ...props }: TextInputProps & { isPassword?: boolean }) => {
   const [isPasswordVisible, setIsPasswordVisible] = useState<boolean>(false);
 
   return (
@@ -25,10 +16,7 @@ const Input = ({
         {...props}
       />
       {isPassword && (
-        <Pressable
-          style={styles.eyeIcon}
-          onPress={() => setIsPasswordVisible((prev) => !prev)}
-        >
+        <Pressable style={styles.eyeIcon} onPress={() => setIsPasswordVisible((prev) => !prev)}>
           {isPasswordVisible ? <EyeOpenedIcon /> : <EyeClosedIcon />}
         </Pressable>
       )}
@@ -39,18 +27,18 @@ const Input = ({
 export default Input;
 
 const styles = StyleSheet.create({
-  input: {
-    height: 58,
-    backgroundColor: Colors.violetDark,
-    paddingHorizontal: 24,
-    borderRadius: Radius.r10,
-    fontSize: Fonts.f16,
-    color: Colors.gray,
-  },
   eyeIcon: {
-    position: "absolute",
-    right: 0,
     paddingHorizontal: 20,
     paddingVertical: 18,
+    position: 'absolute',
+    right: 0,
+  },
+  input: {
+    backgroundColor: Colors.violetDark,
+    borderRadius: Radius.r10,
+    color: Colors.gray,
+    fontSize: Fonts.f16,
+    height: 58,
+    paddingHorizontal: 24,
   },
 });

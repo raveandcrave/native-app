@@ -1,12 +1,12 @@
 export const Colors = {
-  black: "#16171D",
-  white: "#FAFAFA",
-  violetDark: "#2E2D3D",
-  primary: "#6C38CC",
-  primaryHover: "#452481",
-  link: "#A97BFF",
-  gray: "#AFB2BF",
-  red: "#CC384E",
+  black: '#16171D',
+  white: '#FAFAFA',
+  violetDark: '#2E2D3D',
+  primary: '#6C38CC',
+  primaryHover: '#452481',
+  link: '#A97BFF',
+  gray: '#AFB2BF',
+  red: '#CC384E',
 };
 
 export const Gaps = {

@@ -1,14 +1,9 @@
-import {
-  Pressable,
-  PressableProps,
-  Text,
-  StyleSheet,
-  Animated,
-  GestureResponderEvent,
-} from "react-native";
-import { Colors, Fonts, Radius } from "../tokens";
+import { Pressable, PressableProps, Text, StyleSheet, Animated, GestureResponderEvent } from 'react-native';
+import { Colors, Fonts, Radius } from '../tokens';
 
-const Button = ({ text, ...props }: PressableProps & { text: string }) => {
+const Button = (props: PressableProps & { text: string }) => {
+  const { text, onPressIn, onPressOut } = props;
+
   const animatedValue = new Animated.Value(100);
   const color = animatedValue.interpolate({
     inputRange: [0, 100],
@@ -21,7 +16,10 @@ const Button = ({ text, ...props }: PressableProps & { text: string }) => {
       duration: 100,
       useNativeDriver: true,
     }).start();
-    props.onPressIn && props.onPressIn(e);
+
+    if (onPressIn) {
+      onPressIn(e);
+    }
   };
 
   const fadeOut = (e: GestureResponderEvent) => {
@@ -30,7 +28,10 @@ const Button = ({ text, ...props }: PressableProps & { text: string }) => {
       duration: 100,
       useNativeDriver: true,
     }).start();
-    props.onPressOut && props.onPressOut(e);
+
+    if (onPressOut) {
+      onPressOut(e);
+    }
   };
 
   return (
@@ -51,13 +52,13 @@ export default Button;
 
 const styles = StyleSheet.create({
   button: {
-    height: 58,
+    alignItems: 'center',
     borderRadius: Radius.r10,
-    alignItems: "center",
-    justifyContent: "center",
+    height: 58,
+    justifyContent: 'center',
   },
   text: {
-    fontSize: Fonts.f18,
     color: Colors.white,
+    fontSize: Fonts.f18,
   },
 });
