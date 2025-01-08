@@ -1,21 +1,19 @@
-import { Pressable, PressableProps, Text, StyleSheet, Animated, GestureResponderEvent } from 'react-native';
+import { Pressable, PressableProps, Text, StyleSheet, GestureResponderEvent } from 'react-native';
 import { Colors, Fonts, Radius } from '../tokens';
+import Animated, { useSharedValue, interpolateColor, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
 const Button = (props: PressableProps & { text: string }) => {
   const { text, onPressIn, onPressOut } = props;
 
-  const animatedValue = new Animated.Value(100);
-  const color = animatedValue.interpolate({
-    inputRange: [0, 100],
-    outputRange: [Colors.primaryHover, Colors.primary],
+  const colorProgress = useSharedValue(0);
+
+  const animatedStyle = useAnimatedStyle(() => {
+    const backgroundColor = interpolateColor(colorProgress.value, [0, 1], [Colors.primary, Colors.primaryHover]);
+    return { backgroundColor };
   });
 
   const fadeIn = (e: GestureResponderEvent) => {
-    Animated.timing(animatedValue, {
-      toValue: 0,
-      duration: 100,
-      useNativeDriver: true,
-    }).start();
+    colorProgress.value = withTiming(1, { duration: 100 });
 
     if (onPressIn) {
       onPressIn(e);
@@ -23,11 +21,7 @@ const Button = (props: PressableProps & { text: string }) => {
   };
 
   const fadeOut = (e: GestureResponderEvent) => {
-    Animated.timing(animatedValue, {
-      toValue: 100,
-      duration: 100,
-      useNativeDriver: true,
-    }).start();
+    colorProgress.value = withTiming(0, { duration: 100 });
 
     if (onPressOut) {
       onPressOut(e);
@@ -36,12 +30,7 @@ const Button = (props: PressableProps & { text: string }) => {
 
   return (
     <Pressable {...props} onPressIn={fadeIn} onPressOut={fadeOut}>
-      <Animated.View
-        style={{
-          ...styles.button,
-          backgroundColor: color,
-        }}
-      >
+      <Animated.View style={[styles.button, animatedStyle]}>
         <Text style={styles.text}>{text}</Text>
       </Animated.View>
     </Pressable>

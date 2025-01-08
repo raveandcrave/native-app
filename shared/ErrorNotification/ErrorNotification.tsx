@@ -1,24 +1,15 @@
 import { useEffect, useState } from 'react';
 import { ErrorNotificationProps } from './ErrorNotification.props';
-import { Text, StyleSheet, Dimensions, Animated } from 'react-native';
+import { Text, StyleSheet, Dimensions } from 'react-native';
 import { Colors, Fonts } from '../tokens';
+import Animated, { SlideInUp, SlideOutUp } from 'react-native-reanimated';
 
 const ErrorNotification = ({ error }: ErrorNotificationProps) => {
   const [isShown, setIsShown] = useState<boolean>(false);
-  const animatedValue = new Animated.Value(-100);
-
-  const onEnter = () => {
-    Animated.timing(animatedValue, {
-      toValue: 0,
-      duration: 300,
-      useNativeDriver: true,
-    }).start();
-  };
 
   useEffect(() => {
-    if (!error) {
-      return;
-    }
+    if (!error) return;
+
     setIsShown(true);
     const timerId = setTimeout(() => {
       setIsShown(false);
@@ -29,17 +20,11 @@ const ErrorNotification = ({ error }: ErrorNotificationProps) => {
   }, [error]);
 
   if (!isShown) {
-    return <></>;
+    return null;
   }
 
   return (
-    <Animated.View
-      style={{
-        ...styles.error,
-        transform: [{ translateY: animatedValue }],
-      }}
-      onLayout={onEnter}
-    >
+    <Animated.View style={styles.error} entering={SlideInUp.duration(500)} exiting={SlideOutUp.duration(300)}>
       <Text style={styles.errorText}>{error}</Text>
     </Animated.View>
   );
