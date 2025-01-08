@@ -37,6 +37,7 @@ const styles = StyleSheet.create({
     backgroundColor: Colors.violetDark,
     borderRadius: Radius.r10,
     color: Colors.gray,
+    fontFamily: 'FiraSans',
     fontSize: Fonts.f16,
     height: 58,
     paddingHorizontal: 24,

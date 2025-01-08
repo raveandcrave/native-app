@@ -48,6 +48,7 @@ const styles = StyleSheet.create({
   },
   text: {
     color: Colors.white,
+    fontFamily: 'FiraSans',
     fontSize: Fonts.f18,
   },
 });
