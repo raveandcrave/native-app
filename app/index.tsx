@@ -2,11 +2,11 @@ import Button from '@/shared/Button/Button';
 import ErrorNotification from '@/shared/ErrorNotification/ErrorNotification';
 import Input from '@/shared/Input/Input';
 import { Colors, Gaps } from '@/shared/tokens';
-import { useNavigation } from 'expo-router';
+import { Link, useNavigation } from 'expo-router';
 import { useEffect, useState } from 'react';
 import { Text, View, StyleSheet, Image } from 'react-native';
 
-export default function Index() {
+export default function Login() {
   const navigation = useNavigation();
 
   useEffect(() => {
@@ -32,7 +32,9 @@ export default function Index() {
           <Input isPassword placeholder="Пароль" />
           <Button text="Войти" onPress={alert} />
         </View>
-        <Text>Восстановить пароль</Text>
+        <Link href="/restore">
+          <Text>Восстановить пароль</Text>
+        </Link>
       </View>
     </View>
   );
