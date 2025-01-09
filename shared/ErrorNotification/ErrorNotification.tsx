@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
   },
   errorText: {
     color: Colors.white,
-    fontFamily: 'FiraSans',
+    fontFamily: Fonts.regular,
     fontSize: Fonts.f16,
     textAlign: 'center',
   },

@@ -1,10 +1,11 @@
 import { Colors } from '@/shared/tokens';
-import { Text, View } from 'react-native';
+import { Text } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function Restore() {
   return (
-    <View>
+    <SafeAreaView>
       <Text style={{ color: Colors.white }}>Restore</Text>
-    </View>
+    </SafeAreaView>
   );
 }

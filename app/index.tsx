@@ -1,18 +1,12 @@
 import Button from '@/shared/Button/Button';
 import ErrorNotification from '@/shared/ErrorNotification/ErrorNotification';
 import Input from '@/shared/Input/Input';
+import CustomLink from '@/shared/CustomLink/CustomLink';
 import { Colors, Gaps } from '@/shared/tokens';
-import { Link, useNavigation } from 'expo-router';
-import { useEffect, useState } from 'react';
-import { Text, View, StyleSheet, Image } from 'react-native';
+import { useState } from 'react';
+import { View, StyleSheet, Image } from 'react-native';
 
 export default function Login() {
-  const navigation = useNavigation();
-
-  useEffect(() => {
-    navigation.setOptions({ headerShown: false });
-  }, [navigation]);
-
   const [error, setError] = useState<string | undefined>();
 
   const alert = () => {
@@ -32,9 +26,7 @@ export default function Login() {
           <Input isPassword placeholder="Пароль" />
           <Button text="Войти" onPress={alert} />
         </View>
-        <Link href="/restore">
-          <Text>Восстановить пароль</Text>
-        </Link>
+        <CustomLink href="/restore" text="Восстановить пароль" />
       </View>
     </View>
   );

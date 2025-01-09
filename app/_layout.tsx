@@ -4,7 +4,7 @@ import { Stack } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
-import { SafeAreaProvider, useSafeAreaInsets } from 'react-native-safe-area-context';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 SplashScreen.preventAutoHideAsync();
 
@@ -13,7 +13,6 @@ export default function RootLayout() {
     FiraSans: require('../assets/fonts/FiraSans-Regular.ttf'),
     FiraSansSemiBold: require('../assets/fonts/FiraSans-SemiBold.ttf'),
   });
-  const insets = useSafeAreaInsets();
 
   useEffect(() => {
     if (loaded) {
@@ -40,7 +39,6 @@ export default function RootLayout() {
           statusBarBackgroundColor: Colors.black,
           contentStyle: {
             backgroundColor: Colors.black,
-            paddingTop: insets.top,
           },
         }}
       >
