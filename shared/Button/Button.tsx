@@ -1,9 +1,9 @@
-import { Pressable, PressableProps, Text, StyleSheet, GestureResponderEvent } from 'react-native';
+import { Pressable, PressableProps, Text, StyleSheet, GestureResponderEvent, ActivityIndicator } from 'react-native';
 import { Colors, Fonts, Radius } from '../tokens';
 import Animated, { useSharedValue, interpolateColor, useAnimatedStyle, withTiming } from 'react-native-reanimated';
 
-const Button = (props: PressableProps & { text: string }) => {
-  const { text, onPressIn, onPressOut } = props;
+const Button = (props: PressableProps & { text: string; isLoading?: boolean }) => {
+  const { text, onPressIn, onPressOut, isLoading } = props;
 
   const colorProgress = useSharedValue(0);
 
@@ -31,7 +31,8 @@ const Button = (props: PressableProps & { text: string }) => {
   return (
     <Pressable {...props} onPressIn={fadeIn} onPressOut={fadeOut}>
       <Animated.View style={[styles.button, animatedStyle]}>
-        <Text style={styles.text}>{text}</Text>
+        {!isLoading && <Text style={styles.text}>{text}</Text>}
+        {isLoading && <ActivityIndicator size="large" color={Colors.white} />}
       </Animated.View>
     </Pressable>
   );

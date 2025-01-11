@@ -45,7 +45,7 @@ export default function Login() {
         <View style={styles.form}>
           <Input placeholder="Email" value={email} onChangeText={setEmail} />
           <Input isPassword placeholder="Пароль" value={password} onChangeText={setPassword} />
-          <Button text="Войти" onPress={submit} />
+          <Button text="Войти" onPress={submit} isLoading={isLoading} />
         </View>
         <CustomLink href="/restore" text="Восстановить пароль" />
       </View>
