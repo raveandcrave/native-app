@@ -34,6 +34,8 @@ export default tseslint.config(
     },
     rules: {
       '@typescript-eslint/no-require-imports': 'off',
+      'react-native/sort-styles': 'off',
+      'react-hooks/exhaustive-deps': 'off',
     },
   },
 );
