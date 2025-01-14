@@ -6,6 +6,7 @@ import { Drawer } from 'expo-router/drawer';
 import { useAtomValue } from 'jotai';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
+import CustomDrawer from '@/entities/layout/ui/CustomDrawer/CustomDrawer';
 
 export default function AppLayout() {
   const { access_token } = useAtomValue(authAtom);
@@ -17,13 +18,12 @@ export default function AppLayout() {
   return (
     <GestureHandlerRootView style={styles.gestureView}>
       <Drawer
+        drawerContent={(props) => <CustomDrawer {...props} />}
         screenOptions={({ navigation }) => ({
           headerStyle: {
             backgroundColor: Colors.blackLight,
           },
-          headerLeft: () => {
-            return <MenuButton navigation={navigation} />;
-          },
+          headerLeft: () => <MenuButton navigation={navigation} />,
           headerTitleStyle: {
             color: Colors.white,
             fontFamily: Fonts.regular,
