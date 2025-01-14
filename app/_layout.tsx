@@ -1,6 +1,7 @@
 import { Colors } from '@/shared/tokens';
+import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 import { useFonts } from 'expo-font';
-import { Stack } from 'expo-router';
+import { Stack, useNavigationContainerRef } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
@@ -13,6 +14,10 @@ export default function RootLayout() {
     FiraSans: require('../assets/fonts/FiraSans-Regular.ttf'),
     FiraSansSemiBold: require('../assets/fonts/FiraSans-SemiBold.ttf'),
   });
+
+  //Navigation DevTools It doesn't affect your production bundle.
+  const navigationRef = useNavigationContainerRef();
+  useReactNavigationDevTools(navigationRef);
 
   useEffect(() => {
     if (loaded) {
