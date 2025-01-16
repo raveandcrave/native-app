@@ -6,7 +6,7 @@ import { Drawer } from 'expo-router/drawer';
 import { useAtomValue } from 'jotai';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StyleSheet } from 'react-native';
-import CustomDrawer from '@/entities/layout/ui/CustomDrawer/CustomDrawer';
+import CustomDrawer from '@/widgets/layout/ui/CustomDrawer/CustomDrawer';
 
 export default function AppLayout() {
   const { access_token } = useAtomValue(authAtom);
