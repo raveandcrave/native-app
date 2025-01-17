@@ -5,7 +5,7 @@ import { Href } from 'expo-router';
 import { DrawerContentComponentProps, DrawerContentScrollView } from '@react-navigation/drawer';
 import { logoutAtom } from '@/entities/auth/model/auth.state';
 import { loadProfileAtom } from '@/entities/user/model/user.state';
-import UserMenu from '@/entities/user/ui/UserMenu/UserMenu';
+import UserMenu from '@/widgets/user/ui/UserMenu/UserMenu';
 import CloseDrawer from '@/features/layout/ui/CloseDrawer/CloseDrawer';
 import MenuItem from '@/entities/layout/ui/MenuItem/MenuItem';
 import CustomLink from '@/shared/CustomLink/CustomLink';

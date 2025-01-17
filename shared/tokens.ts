@@ -14,6 +14,7 @@ export const Gaps = {
   g8: 8,
   g10: 10,
   g16: 16,
+  g20: 20,
   g50: 50,
 };
 
@@ -22,6 +23,7 @@ export const Radius = {
 };
 
 export const Fonts = {
+  f14: 14,
   f16: 16,
   f18: 18,
   f20: 20,
