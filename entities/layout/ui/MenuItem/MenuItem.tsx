@@ -1,6 +1,6 @@
 import { DrawerNavigationHelpers } from '@react-navigation/drawer/lib/typescript/commonjs/src/types';
-import { ReactElement, useState } from 'react';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
+import { ReactElement } from 'react';
+import { Pressable, StyleSheet, Text } from 'react-native';
 import { Href, usePathname, useRouter } from 'expo-router';
 import { Colors, Fonts, Gaps } from '@/shared/tokens';
 
@@ -14,10 +14,8 @@ interface MenuItemProps {
 const MenuItem = ({ text, icon, navigation, href }: MenuItemProps) => {
   const router = useRouter();
   const pathname = usePathname();
-  const [clicked, setClicked] = useState<boolean>(false);
 
   const isActive = href === pathname;
-  const backgroundColor = clicked ? Colors.blackLight : 'transparent';
   const borderColor = isActive ? Colors.primary : Colors.black;
 
   const onPress = () => {
@@ -26,11 +24,16 @@ const MenuItem = ({ text, icon, navigation, href }: MenuItemProps) => {
   };
 
   return (
-    <Pressable onPress={onPress} onPressIn={() => setClicked(true)} onPressOut={() => setClicked(false)}>
-      <View style={{ ...styles.container, backgroundColor, borderColor }}>
-        {icon}
-        <Text style={styles.text}>{text}</Text>
-      </View>
+    <Pressable
+      onPress={onPress}
+      style={({ pressed }) => ({
+        ...styles.container,
+        borderColor,
+        backgroundColor: pressed ? Colors.blackLight : 'transparent',
+      })}
+    >
+      {icon}
+      <Text style={styles.text}>{text}</Text>
     </Pressable>
   );
 };
