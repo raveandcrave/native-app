@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { StyleSheet, View } from 'react-native';
 import { useAtom } from 'jotai';
+import * as Sharing from 'expo-sharing';
 import Avatar from '@/entities/user/ui/Avatar/Avatar';
 import { updateProfileAtom } from '@/entities/user/model/user.state';
 import { Gaps } from '@/shared/tokens';
@@ -10,6 +11,16 @@ import Button from '@/shared/Button/Button';
 export default function ProfilePage() {
   const [image, setImage] = useState<string | null>(null);
   const [profile, updateProfile] = useAtom(updateProfileAtom);
+
+  const shareProfile = async () => {
+    const isSharingAvaliable = await Sharing.isAvailableAsync();
+
+    if (!isSharingAvaliable) return;
+
+    await Sharing.shareAsync('https://purpleschool.ru', {
+      dialogTitle: 'Поделиться профилем',
+    });
+  };
 
   const submitProfile = () => {
     if (!image) return;
@@ -29,6 +40,7 @@ export default function ProfilePage() {
         <ImageUploader onUpload={setImage} onError={(e) => console.log(e)} />
       </View>
       <Button text="Сохранить" onPress={submitProfile} />
+      <Button text="Поделиться" onPress={shareProfile} />
     </View>
   );
 }
