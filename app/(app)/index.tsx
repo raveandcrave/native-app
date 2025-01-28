@@ -1,16 +1,25 @@
-import { logoutAtom } from '@/entities/auth/model/auth.state';
-import { useSetAtom } from 'jotai';
-import { Pressable, Text } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
+import { courseAtom, loadCourseAtom } from '@/entities/course/model/course.state';
+import { Colors } from '@/shared/tokens';
+import { useAtomValue, useSetAtom } from 'jotai';
+import { useEffect } from 'react';
+import { Text, View } from 'react-native';
 
 export default function MyCourses() {
-  const logout = useSetAtom(logoutAtom);
+  const { courses } = useAtomValue(courseAtom);
+  const loadCourses = useSetAtom(loadCourseAtom);
+
+  useEffect(() => {
+    loadCourses();
+  }, []);
 
   return (
-    <SafeAreaView>
-      <Pressable onPress={() => logout()}>
-        <Text>logout</Text>
-      </Pressable>
-    </SafeAreaView>
+    <View>
+      {courses.length > 0 &&
+        courses.map((c) => (
+          <Text style={{ color: Colors.white }} key={c.id}>
+            {c.title}
+          </Text>
+        ))}
+    </View>
   );
 }
