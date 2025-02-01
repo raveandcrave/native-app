@@ -1,8 +1,9 @@
+import { StudentCourseDescription } from '@/entities/course/model/course.model';
 import { courseAtom, loadCourseAtom } from '@/entities/course/model/course.state';
-import { Colors } from '@/shared/tokens';
+import CourseCard from '@/widgets/course/ui/CourseCard/CourseCard';
 import { useAtomValue, useSetAtom } from 'jotai';
 import { useEffect } from 'react';
-import { Text, View } from 'react-native';
+import { FlatList, StyleSheet, View } from 'react-native';
 
 export default function MyCourses() {
   const { courses } = useAtomValue(courseAtom);
@@ -12,14 +13,23 @@ export default function MyCourses() {
     loadCourses();
   }, []);
 
+  const renderCourse = ({ item }: { item: StudentCourseDescription }) => {
+    return (
+      <View style={styles.item}>
+        <CourseCard {...item} />
+      </View>
+    );
+  };
+
   return (
-    <View>
-      {courses.length > 0 &&
-        courses.map((c) => (
-          <Text style={{ color: Colors.white }} key={c.id}>
-            {c.title}
-          </Text>
-        ))}
-    </View>
+    courses.length > 0 && (
+      <FlatList data={courses} keyExtractor={(item) => item.id.toString()} renderItem={renderCourse} />
+    )
   );
 }
+
+const styles = StyleSheet.create({
+  item: {
+    padding: 20,
+  },
+});

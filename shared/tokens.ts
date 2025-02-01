@@ -8,6 +8,7 @@ export const Colors = {
   link: '#A97BFF',
   gray: '#AFB2BF',
   red: '#CC384E',
+  border: '#4D5064',
 };
 
 export const Gaps = {
@@ -21,6 +22,7 @@ export const Gaps = {
 
 export const Radius = {
   r10: 10,
+  r17: 17,
 };
 
 export const Fonts = {
@@ -28,6 +30,7 @@ export const Fonts = {
   f16: 16,
   f18: 18,
   f20: 20,
+  f21: 21,
   regular: 'FiraSans-Regular',
   semibold: 'FiraSans-SemiBold',
 };
