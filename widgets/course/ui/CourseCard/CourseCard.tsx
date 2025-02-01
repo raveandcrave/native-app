@@ -4,8 +4,10 @@ import Chip from '@/shared/Chip/Chip';
 import { Colors, Fonts, Gaps, Radius } from '@/shared/tokens';
 import { Image, StyleSheet, Text, View } from 'react-native';
 import * as Linking from 'expo-linking';
+import MaskedView from '@react-native-masked-view/masked-view';
+import { LinearGradient } from 'expo-linear-gradient';
 
-const CourseCard = ({ image, shortTitle, courseOnDirection, alias }: StudentCourseDescription) => {
+const CourseCard = ({ image, shortTitle, courseOnDirection, alias, allTariffs }: StudentCourseDescription) => {
   return (
     <View style={styles.card}>
       <Image
@@ -21,6 +23,11 @@ const CourseCard = ({ image, shortTitle, courseOnDirection, alias }: StudentCour
           {courseOnDirection.length &&
             courseOnDirection.map((item) => <Chip key={item.direction.name} text={item.direction.name} />)}
         </View>
+        <MaskedView maskElement={<Text style={styles.tariff}>Тариф &laquo;{allTariffs[0].name}&raquo;</Text>}>
+          <LinearGradient colors={['#D77BE5', '#BE63E5', '#6C38CC']} start={{ x: 0, y: 0 }} end={{ x: 1, y: 0 }}>
+            <Text style={[styles.tariff, styles.tariffWithOpacity]}>Тариф &laquo;{allTariffs[0].name}&raquo;</Text>
+          </LinearGradient>
+        </MaskedView>
       </View>
       <View style={styles.footer}>
         <Button text="Купить" onPress={() => Linking.openURL(`https://purpleschool.ru/course/${alias}`)} />
@@ -35,6 +42,14 @@ const styles = StyleSheet.create({
   card: {
     borderRadius: Radius.r10,
     backgroundColor: Colors.blackLight,
+  },
+  tariff: {
+    marginTop: 18,
+    fontSize: Fonts.f16,
+    fontFamily: Fonts.regular,
+  },
+  tariffWithOpacity: {
+    opacity: 0,
   },
   image: {
     borderRadius: Radius.r10,

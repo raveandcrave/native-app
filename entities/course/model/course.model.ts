@@ -19,7 +19,7 @@ export type StudentCourseDescription = {
   avgRating: number;
   price: number;
   courseOnDirection: { direction: Record<'name', string> }[];
-  tariffs: Tariff[];
+  allTariffs: Tariff[];
   progress: Progress;
 };
 
