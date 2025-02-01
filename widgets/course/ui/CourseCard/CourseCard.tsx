@@ -3,8 +3,9 @@ import Button from '@/shared/Button/Button';
 import Chip from '@/shared/Chip/Chip';
 import { Colors, Fonts, Gaps, Radius } from '@/shared/tokens';
 import { Image, StyleSheet, Text, View } from 'react-native';
+import * as Linking from 'expo-linking';
 
-const CourseCard = ({ image, shortTitle, courseOnDirection }: StudentCourseDescription) => {
+const CourseCard = ({ image, shortTitle, courseOnDirection, alias }: StudentCourseDescription) => {
   return (
     <View style={styles.card}>
       <Image
@@ -22,7 +23,7 @@ const CourseCard = ({ image, shortTitle, courseOnDirection }: StudentCourseDescr
         </View>
       </View>
       <View style={styles.footer}>
-        <Button text="Купить" />
+        <Button text="Купить" onPress={() => Linking.openURL(`https://purpleschool.ru/course/${alias}`)} />
       </View>
     </View>
   );
