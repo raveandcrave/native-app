@@ -1,4 +1,5 @@
 import { Colors } from '@/shared/tokens';
+import Notification from '@/shared/Notification/Notification';
 import { useReactNavigationDevTools } from '@dev-plugins/react-navigation';
 import { useFonts } from 'expo-font';
 import { Stack, useNavigationContainerRef } from 'expo-router';
@@ -37,6 +38,7 @@ export default function RootLayout() {
 
   return (
     <SafeAreaProvider>
+      <Notification />
       <StatusBar style="light" />
       <Stack
         screenOptions={{

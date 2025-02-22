@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "native-app",
-    "slug": "native-app",
+    "slug": "purpleschoolapp",
     "version": "1.0.0",
     "orientation": "default",
     "icon": "./assets/images/icon.png",
@@ -28,7 +28,10 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/FiraSans-Regular.ttf", "./assets/fonts/FiraSans-SemiBold.ttf"]
+          "fonts": [
+            "./assets/fonts/FiraSans-Regular.ttf",
+            "./assets/fonts/FiraSans-SemiBold.ttf"
+          ]
         }
       ],
       [
@@ -39,10 +42,28 @@
           "resizeMode": "contain",
           "backgroundColor": "#16171D"
         }
+      ],
+      [
+        "expo-notifications",
+        {
+          "icon": "./assets/notification_icon.png",
+          "color": "#16171D",
+          "defaultChannel": "default",
+          "enableBackgroundRemoteNotifications": false
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "8f7c0b55-7684-4399-98ed-6d25748b7493"
+      }
+    },
+    "owner": "steezze"
   }
 }
