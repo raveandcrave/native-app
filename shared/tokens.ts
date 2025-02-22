@@ -5,8 +5,10 @@ export const Colors = {
   violetDark: '#2E2D3D',
   primary: '#6C38CC',
   primaryHover: '#452481',
+  secondary: '#E47AD5',
   link: '#A97BFF',
   gray: '#AFB2BF',
+  grayLight: '#DAD9DE',
   red: '#CC384E',
   border: '#4D5064',
 };
@@ -26,6 +28,7 @@ export const Radius = {
 };
 
 export const Fonts = {
+  f12: 12,
   f14: 14,
   f16: 16,
   f18: 18,

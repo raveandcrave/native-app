@@ -6,6 +6,7 @@ import { Image, StyleSheet, Text, View } from 'react-native';
 import * as Linking from 'expo-linking';
 import MaskedView from '@react-native-masked-view/masked-view';
 import { LinearGradient } from 'expo-linear-gradient';
+import CourseProgress from '@/entities/course/ui/CourseProgress/CourseProgress';
 
 const CourseCard = ({ image, shortTitle, courseOnDirection, alias, allTariffs }: StudentCourseDescription) => {
   return (
@@ -18,6 +19,7 @@ const CourseCard = ({ image, shortTitle, courseOnDirection, alias, allTariffs }:
         style={styles.image}
       />
       <View style={styles.header}>
+        <CourseProgress passedLessons={10} totalLessons={120} />
         <Text style={styles.title}>{shortTitle}</Text>
         <View style={styles.chips}>
           {courseOnDirection.length &&
