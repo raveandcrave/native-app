@@ -18,7 +18,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.steezze.purpleschoolapp"
     },
     "web": {
       "bundler": "metro",
@@ -30,7 +31,10 @@
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/FiraSans-Regular.ttf", "./assets/fonts/FiraSans-SemiBold.ttf"]
+          "fonts": [
+            "./assets/fonts/FiraSans-Regular.ttf",
+            "./assets/fonts/FiraSans-SemiBold.ttf"
+          ]
         }
       ],
       [
